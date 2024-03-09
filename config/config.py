@@ -17,6 +17,8 @@ class Settings(BaseSettings):
     DB_PASS: str
     DB_NAME: str
 
+    PERIOD_TIME: int = 5
+
     @property
     def DATABASE_URL(self):
         """Адрес PostgreSQL базы данных."""

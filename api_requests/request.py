@@ -11,7 +11,7 @@ class WBProduct:
     def __init__(self) -> None:
         self.product_info = {}
 
-    async def get_info(self, item_number: int) -> dict:
+    async def get_info(self, item_number: int) -> str:
         """Получение информации о товаре в JSON формате."""
         payload: dict[str, str] = {
             "appType": 1,
@@ -31,7 +31,7 @@ class WBProduct:
                 if product:
                     product = product[0]
                 else:
-                    return {}
+                    return ""
                 stocks = product.get("sizes")[0].get("stocks")
                 try:
                     price = int(product.get("salePriceU") / 100)
@@ -45,4 +45,5 @@ class WBProduct:
                     WBInfo.rating: product["rating"],
                     WBInfo.quantity: stocks[0].get("qty") if stocks else 0,
                 }
-                return self.product_info
+                res_info = "\n".join(f"{k}{val}" for k, val in self.product_info.items())
+                return res_info

@@ -15,4 +15,4 @@ class WBHistory(Base):
     item_number: Mapped[int]
 
     def __str__(self) -> str:
-        return f'<b><em>Артикул</em></b>={self.item_number} - <b>{self.date_time.strftime("%d.%m.%y %H:%M:%S")}</b>'
+        return f'<b><em>Артикул</em></b>={self.item_number} 🕰 - <b>{self.date_time.strftime("%d.%m.%y %H:%M:%S")}</b>'

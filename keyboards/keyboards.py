@@ -25,18 +25,14 @@ def get_main_keyboard() -> ReplyKeyboardMarkup:
     return kb_builder.as_markup()
 
 
-def get_subscribe_keyboard() -> InlineKeyboardMarkup:
+def get_subscribe_keyboard(item_id: str) -> InlineKeyboardMarkup:
     """Клавиша подписки на оповещения."""
     kb_builder: InlineKeyboardBuilder = InlineKeyboardBuilder()
     button = InlineKeyboardButton(
         text=LEXICON[WBLexicon.Subscribe],
-        callback_data=WBLexicon.Subscribe,
+        callback_data=item_id,
     )
 
     kb_builder.row(button)
-
-    return kb_builder.as_markup()
-
-
 
     return kb_builder.as_markup()
