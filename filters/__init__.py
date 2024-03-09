@@ -1,1 +1,1 @@
-from filters.filters import IsGetProductInfo
+from filters.filters import IsGetProductInfo, IsGetWBHistory

@@ -5,7 +5,7 @@ from enum import Enum
 
 class WBLexicon(str, Enum):
     GetInfo = "get_info"
-    GetInfoFromBD = "get_info_from_bd"
+    GetWBHistory = "get_wb_history"
     StopNotifications = "stop_notifications"
     Subscribe = "subscribe"
 
@@ -26,7 +26,7 @@ LEXICON: dict[str, str] = {
     "о товаре с WildBerries: название, артикул, цена, рейтинг товара, "
     "количество товара на всех складах",
     WBLexicon.GetInfo: "Получить информацию по товару",
-    WBLexicon.GetInfoFromBD: "Получить информацию из БД",
+    WBLexicon.GetWBHistory: "Получить информацию из БД",
     WBLexicon.StopNotifications: "Остановить уведомления",
     WBLexicon.Subscribe: "подписаться"
 }

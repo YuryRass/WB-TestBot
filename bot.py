@@ -10,7 +10,7 @@ from database import create_tables
 from config import settings
 from handlers.main_handlers import router as main_router
 from handlers.other_handlers import router as other_router
-from database.model import Product
+from database.model import WBHistory
 
 
 dispatcher: Dispatcher = Dispatcher()

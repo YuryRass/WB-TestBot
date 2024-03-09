@@ -8,6 +8,7 @@ from aiogram.types import (
 )
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from lexicon import LEXICON, WBLexicon
+from database.crud import WBCrud
 
 
 def get_main_keyboard() -> ReplyKeyboardMarkup:
@@ -33,5 +34,9 @@ def get_subscribe_keyboard() -> InlineKeyboardMarkup:
     )
 
     kb_builder.row(button)
+
+    return kb_builder.as_markup()
+
+
 
     return kb_builder.as_markup()

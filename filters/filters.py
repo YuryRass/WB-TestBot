@@ -9,3 +9,7 @@ from lexicon import WBLexicon, LEXICON
 class IsGetProductInfo(BaseFilter):
     async def __call__(self, message: Message) -> bool:
         return message.text == LEXICON[WBLexicon.GetInfo]
+
+class IsGetWBHistory(BaseFilter):
+    async def __call__(self, message: Message) -> bool:
+        return message.text == LEXICON[WBLexicon.GetWBHistory]

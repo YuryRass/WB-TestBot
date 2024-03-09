@@ -1,1 +1,4 @@
-from keyboards.keyboards import get_main_keyboard, get_subscribe_keyboard
+from keyboards.keyboards import (
+    get_main_keyboard,
+    get_subscribe_keyboard,
+)
