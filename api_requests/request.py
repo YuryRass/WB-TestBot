@@ -2,6 +2,7 @@
 
 from aiohttp import ClientSession
 from config import settings
+from lexicon import WBInfo
 
 
 class WBProduct:
@@ -32,12 +33,16 @@ class WBProduct:
                 else:
                     return {}
                 stocks = product.get("sizes")[0].get("stocks")
+                try:
+                    price = int(product.get("salePriceU") / 100)
+                except:
+                    price = 0
 
-                self.product_info.update(
-                    name=product.get("name"),
-                    article_number=item_number,
-                    price=product.get("salePriceU"),
-                    rating=product["rating"],
-                    quantity=stocks[0].get("qty") if stocks else 0,
-                )
+                self.product_info = {
+                    WBInfo.name: product.get("name"),
+                    WBInfo.article_number: item_number,
+                    WBInfo.price: price,
+                    WBInfo.rating: product["rating"],
+                    WBInfo.quantity: stocks[0].get("qty") if stocks else 0,
+                }
                 return self.product_info

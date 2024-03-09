@@ -1,5 +1,5 @@
 from aiogram import Router
-from aiogram.types import Message, ReplyKeyboardMarkup
+from aiogram.types import Message
 from aiogram.filters import CommandStart, Command, StateFilter
 from aiogram.fsm.state import default_state
 

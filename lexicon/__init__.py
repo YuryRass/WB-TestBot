@@ -1,1 +1,1 @@
-from lexicon.lexicon import LEXICON
+from lexicon.lexicon import LEXICON, WBLexicon, WBInfo

@@ -9,6 +9,8 @@ from database import create_tables
 
 from config import settings
 from handlers.main_handlers import router as main_router
+from handlers.other_handlers import router as other_router
+from database.model import Product
 
 
 dispatcher: Dispatcher = Dispatcher()
@@ -31,6 +33,7 @@ async def main():
     await bot.delete_webhook(drop_pending_updates=True)
 
     dispatcher.include_router(main_router)
+    dispatcher.include_router(other_router)
 
     await dispatcher.start_polling(bot)
     dispatcher.run_polling(bot)
