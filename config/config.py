@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     DB_PASS: str
     DB_NAME: str
 
-    PERIOD_TIME: int = 5
+    PERIOD_TIME: int = 300  # (5 минут)
 
     @property
     def DATABASE_URL(self):
