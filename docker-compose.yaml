@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  bot:
+    image: bot_image
+    build:
+      context: .
+    container_name: bot
+    env_file:
+      - .env
+    command: python3 bot.py
+    restart: unless-stopped
+    networks:
+      - my_network
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    container_name: db
+    image: postgres:15.1-alpine
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - 1234:5432
+    networks:
+      - my_network
+    healthcheck:
+      test: pg_isready -U ${DB_USER} -d ${DB_NAME}
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+
+volumes:
+  postgresdata:
+    driver: local
+
+networks:
+  my_network:
+    name: my_network
