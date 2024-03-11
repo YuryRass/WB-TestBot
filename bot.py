@@ -4,13 +4,14 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.enums import ParseMode
+from aiogram.client.bot import DefaultBotProperties
 
 from database import create_tables
 
 from config import settings
 from handlers.main_handlers import router as main_router
 from handlers.other_handlers import router as other_router
-from database.model import WBHistory
 
 
 dispatcher: Dispatcher = Dispatcher()
@@ -18,7 +19,7 @@ dispatcher: Dispatcher = Dispatcher()
 async def main():
     # Логгирование
     logging.basicConfig(
-        level=logging.WARNING,
+        level=logging.DEBUG,
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     )
     # Создание таблиц, если БД пустая
@@ -26,7 +27,7 @@ async def main():
 
     bot: Bot = Bot(
         token=settings.BOT_TOKEN,
-        parse_mode='HTML'
+        default=DefaultBotProperties(parse_mode=ParseMode.HTML)
     )
 
 

@@ -35,8 +35,7 @@ async def input_product_item(message: Message, state: FSMContext):
 @router.message(IsGetWBHistory())
 async def get_wb_info_from_db(message: Message):
     history = await WBCrud.get_last_five_records(int(message.from_user.id))
-    info = "Ваша информация из БД:\n"
-    info += "\n".join(f"{i+1}) {h}" for i, h in enumerate(history))
+    info = f"Ваша информация из БД:\n{chr(10).join(f'{i+1}) {h}' for i, h in enumerate(history))}"
     await message.answer(text=info)
 
 
