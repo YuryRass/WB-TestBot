@@ -8,7 +8,6 @@ from aiogram.types import (
 )
 from aiogram.utils.keyboard import ReplyKeyboardBuilder, InlineKeyboardBuilder
 from lexicon import LEXICON, WBLexicon
-from database.crud import WBCrud
 
 
 def get_main_keyboard() -> ReplyKeyboardMarkup:
@@ -17,7 +16,7 @@ def get_main_keyboard() -> ReplyKeyboardMarkup:
     buttons: list[KeyboardButton] = [
         KeyboardButton(text=description)
         for button, description in LEXICON.items()
-        if not button.startswith("/")
+        if not button.startswith("/") and button != WBLexicon.Subscribe
     ]
 
     kb_builder.row(*buttons, width=2)
